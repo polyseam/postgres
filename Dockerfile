@@ -21,6 +21,7 @@ COPY requirements.txt /
 # Install pg apt files
 RUN set -xe; \
 	apt-get update; \
+    apt install curl ca-certificates; \
     apt install -y postgresql-common;
 
 RUN set -xe; \
