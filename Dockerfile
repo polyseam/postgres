@@ -24,7 +24,7 @@ RUN set -xe; \
     apt install -y postgresql-common;
 
 RUN set -xe; \
-    /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh;
+    YES=yes /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh;
 
 # Install additional extensions
 RUN set -xe; \
