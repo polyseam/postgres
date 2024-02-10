@@ -29,8 +29,10 @@ LABEL org.opencontainers.image.description="This Docker image contains PostgreSQ
 COPY requirements.txt /
 
 # Install pg apt files
-RUN sudo apt install -y postgresql-common
-RUN sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+RUN set -xe; \
+	apt-get update; \
+    apt install -y postgresql-common; \
+    /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh;
 
 # Install additional extensions
 RUN set -xe; \
