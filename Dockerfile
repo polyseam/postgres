@@ -16,31 +16,23 @@
 #
 FROM postgres:16.1-bullseye
 
-# Do not split the description, otherwise we will see a blank space in the labels
-LABEL name="PostgreSQL Container Images" \
-      vendor="The CloudNativePG Contributors" \
-      version="${PG_VERSION}" \
-      release="19" \
-      summary="PostgreSQL Container images." \
-      description="This Docker image contains PostgreSQL and Barman Cloud based on Postgres 16.1-bullseye."
-
-LABEL org.opencontainers.image.description="This Docker image contains PostgreSQL and Barman Cloud based on Postgres 16.1-bullseye."
-
 COPY requirements.txt /
 
 # Install pg apt files
 RUN set -xe; \
 	apt-get update; \
-    apt install -y postgresql-common; \
+    apt install -y postgresql-common;
+
+RUN set -xe; \
     /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh;
 
 # Install additional extensions
 RUN set -xe; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
-		"postgresql-${PG_MAJOR}-pgaudit" \
-		"postgresql-${PG_MAJOR}-pgvector" \
-		"postgresql-${PG_MAJOR}-pg-failover-slots" \
+		"postgresql-16-pgaudit" \
+		"postgresql-16-pgvector" \
+		"postgresql-16-pg-failover-slots" \
 	; \
 	rm -fr /tmp/* ; \
 	rm -rf /var/lib/apt/lists/*;
