@@ -49,8 +49,6 @@ RUN set -xe; \
 	pip3 install --no-deps -r requirements.txt; \
 	rm -rf /var/lib/apt/lists/*;
 
-RUN echo "wow"
-
 # Change the uid of postgres to 26
 RUN usermod -u 26 postgres
 USER 26
