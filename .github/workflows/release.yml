@@ -1,4 +1,4 @@
-name: Build and Release Airflow Container
+name: Build and Release PG Container
 
 on:
   push:
